@@ -10,9 +10,10 @@ function include_styles(){
 
 
 function include_scripts(){
-    echo '<script src="vendor/jquery/jquery-3.3.1.js" type="text/javascript"></script>';
+    echo '<script src="vendor/jquery/jquery-3.5.1.js" type="text/javascript"></script>';
+    
     echo '<script src="https://kit.fontawesome.com/849df951a4.js"></script>';
-    echo '<script src="./vendor/script.js"></script>';
+    echo '<script src="vendor/script.js"></script>';
 
     
 }

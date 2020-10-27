@@ -32,7 +32,12 @@ function nav(){
         
         if($type_of_user == "admin"){
         echo '
-            <li><a href="./warehouse"><i class="fas fa-warehouse"></i> Magazyn</a></li>
+            <li><a href="./warehouse"><i class="fas fa-warehouse"></i> Magazyn</a>
+            <ul>
+                <li><a href="./inventory">Lista magazynów</a></li>
+                <li><a href="./material">Materiały</a></li>
+            </ul>
+            </li>
             <li><a href="#"><i class="fas fa-sticky-note"></i> Zlecenia</a></li>
             <li><a href="#"><i class="fas fa-tools"></i> Narzędzia</a></li>';
 

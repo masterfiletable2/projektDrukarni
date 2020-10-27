@@ -2,7 +2,6 @@
 
 require_once('functions.php');
 require_once('template/nav.php');
-require_once('template/content.php');
 
 
 session_start();
@@ -36,7 +35,6 @@ if (isset($_SESSION["username"])) {
        <?php nav() ?>
 
         <section class="col-md-9 bg-light">
-        <?php content() ?>
         </section>
     </div>
 
