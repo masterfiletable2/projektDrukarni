@@ -2,7 +2,7 @@
 
 let lastURLSegment = window.location.href.substr(window.location.href.lastIndexOf('/') + 1);
 $(`nav li a[href*=${lastURLSegment}]`).parent().addClass("selected")
-
+console.log(lastURLSegment)
 
 //SessionStorage if exsist
 if(sessionStorage.getItem('test')){

@@ -62,8 +62,6 @@ $material = new Material();
 <!-- <script src="vendor/dataTables.bootstrap.min.js"></script>	 -->
 
 <script src="vendor/jquery.dataTables.min.js"></script>
-<script src="vendor/common.js"></script>
-
 <script src="vendor/material.js"></script>
 	
 </div>	

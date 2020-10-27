@@ -1,8 +1,10 @@
 <?php
+use Phppot\Material;
 use Phppot\Inventory;
 require_once('functions.php');
 require_once('template/nav.php');
 require_once('template/inventory_template.php');
+require_once('template/material_template.php');
 
 
 session_start();
@@ -24,13 +26,18 @@ if (isset($_SESSION["username"])) {
 
 require_once('./Model/Inventory.php');
 $inventory = new Inventory();
+
+
+require_once('./Model/Material.php');
+$material = new Material();
+
 ?>
 
 
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<title>Lista Magazynów</title>
+<title>Magazyn</title>
 <?php include_styles()?>
 
 <link rel="stylesheet" href="assets/css/dataTables.bootstrap.min.css" />
@@ -47,7 +54,11 @@ $inventory = new Inventory();
        <?php nav() ?>
 
         <section class="col-md-9 bg-light">
-            <?php inventory_template(); ?>
+
+            <?php inventory_template() ?>
+
+
+            <?php material_template($material) ?>
 
         </section>
     </div>
@@ -60,10 +71,12 @@ $inventory = new Inventory();
 
 
 <script src="vendor/jquery.dataTables.min.js"></script>
-<!-- <script src="vendor/dataTables.bootstrap.min.js"></script>	 -->
 
+<script src="vendor/material.js"></script>
 
 <script src="vendor/inventory.js"></script>
+
+
 	
 </div>	
 

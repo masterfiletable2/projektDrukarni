@@ -1,6 +1,8 @@
 <?php
 use Phppot\Inventory;
 use Phppot\Material;
+use Phppot\Users;
+
 
 session_start();
 
@@ -56,4 +58,35 @@ if(!empty($_POST['btn_action']) && $_POST['btn_action'] == 'updateMaterial'){
 }
 if(!empty($_POST['btn_action']) && $_POST['btn_action'] == 'deleteMaterial'){
 	$material->deleteMaterial();
+}
+
+
+
+
+
+
+
+// Users management
+
+require_once __DIR__ . '/Model/Users.php';
+	$users = new Users();
+
+
+if(!empty($_POST['action']) && $_POST['action'] == 'usersList') {
+	$users->getUsersList();
+
+}
+
+
+if(!empty($_POST['btn_action']) && $_POST['btn_action'] == 'usersAdd'){
+	$users->saveUsers();
+}
+if(!empty($_POST['btn_action']) && $_POST['btn_action'] == 'getUsers'){
+	$users->getUsers();
+}
+if(!empty($_POST['btn_action']) && $_POST['btn_action'] == 'updateUsers'){
+	$users->updateUsers();
+}
+if(!empty($_POST['btn_action']) && $_POST['btn_action'] == 'deleteUsers'){
+	$users->deleteUsers();
 }
