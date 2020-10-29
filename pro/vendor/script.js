@@ -101,3 +101,22 @@ $(".dataTables_info,.dataTables_paginate").remove();
 
 
 
+
+
+
+
+
+//events - btn
+$( document ).ajaxComplete(function() {
+  
+
+
+
+$(".btn-info").click(function(){
+  $(".info").toggle()
+})
+
+})
+
+
+

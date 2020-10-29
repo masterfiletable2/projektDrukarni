@@ -16,8 +16,8 @@ if (! empty($_POST["modify-btn"])) {
 
 
 
-require_once('template/nav.php');
-require_once('template/edit-profile.php');
+require_once('template/nav_template.php');
+require_once('template/user-edit_template.php');
 
 
 

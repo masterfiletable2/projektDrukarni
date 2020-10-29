@@ -14,6 +14,18 @@ $(function(){
 
 	});
 	
+
+
+
+
+	
+
+
+
+
+
+
+
 	var materialdataTable = $('#materialList').DataTable({
 		
 		"lengthChange": false,
@@ -89,6 +101,9 @@ $(function(){
 				$('#inventoryid').val(data.inventoryid);
 				$('#materialname').val(data.materialname);
 				$('#quantity').val(data.quantity);
+				$('#matrix').val(data.matrix);
+				$('#refinement').val(data.refinement);
+				$('#notes').val(data.notes);
 
 				$('#id').val(id);
 				$('#action').val('Edytuj');
@@ -116,4 +131,10 @@ $(function(){
 	});
 	
 });
+
+
+
+
+
+
 

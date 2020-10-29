@@ -128,3 +128,16 @@ table {
 
 
 
+/*events*/
+.info {
+	display:none;
+	position:absolute;
+	padding:1rem;
+	background:#fff;
+	box-shadow:0px 0px 3px 0px #333;
+	width: 300px;
+	max-width:100%;
+	word-break:break-all;
+	line-height:1.6rem;
+	transform: translateX(-100%);
+}

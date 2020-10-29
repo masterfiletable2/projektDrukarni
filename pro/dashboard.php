@@ -1,7 +1,9 @@
 <?php
+use Phppot\Dashboard;
 
 require_once('functions.php');
-require_once('template/nav.php');
+require_once('template/nav_template.php');
+require_once('template/dashboard_template.php');
 
 
 session_start();
@@ -19,6 +21,10 @@ if (isset($_SESSION["username"])) {
     header("Location: $url");
 }
 
+
+require_once('./Model/Dashboard.php');
+$material = new Dashboard();
+
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -35,10 +41,23 @@ if (isset($_SESSION["username"])) {
        <?php nav() ?>
 
         <section class="col-md-9 bg-light">
+
+        <?php dashboard_template($material); ?>
         </section>
     </div>
 
 
     <?php include_scripts() ?>
+
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
+
+<script src="vendor/jquery.dataTables.min.js"></script>
+<script src="vendor/material.js"></script>
+
+
 </body>
 </html>

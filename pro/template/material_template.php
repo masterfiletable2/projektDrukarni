@@ -24,7 +24,10 @@ function material_template($thisMaterial){
 								<th>ID</th>
 								<th>Magazyn</th>
 								<th>Nazwa materiału</th>
+								<th>Matryca</th>
+								<th>Uszlachetnienie</th>
 								<th>Ilość</th>
+								<th>Uwagi</th>
 								<th>Opcje</th>
 							</tr>
 						</thead>
@@ -53,13 +56,34 @@ function material_template($thisMaterial){
     				
 						
 						<div class="form-group">
-							<label>Wprowadź nazwę dla materiału</label>
+							<label>Nazwa materiału</label>
 							<input type="text" name="materialname" id="materialname" class="form-control" required />
 						</div>
 
 						<div class="form-group">
-							<label>Wprowadź ilość materiału</label>
+							<label>Ilość materiału</label>
 							<input type="number" min="0" max="999" name="quantity" id="quantity" class="form-control" required />
+						</div>
+
+						<div class="form-group">
+							<label>Matryca</label>
+							<input type="text" name="matrix" id="matrix" class="form-control" required />
+						</div>
+
+
+						<div class="form-group">
+							<label>Uszlachetnienie</label>
+								<select name="refinement" id="refinement" class="form-control" required>
+									<option value="">-</option>
+									<option value="Tak">Tak</option>
+									<option value="Nie">Nie</option>
+								</select>
+						</div>
+
+
+						<div class="form-group">
+							<label>Uwagi</label>
+							<textarea name="notes" id="notes" class="form-control" required></textarea>
 						</div>
 
     				</div>

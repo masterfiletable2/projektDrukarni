@@ -17,7 +17,7 @@ function nav(){
             <img class="user_avatar urlAvatar mr-2" src="'.$avatar.'"/><p class="m-0">'.$username.'</p>
             
             <ul class="d-flex w-100 justify-content-end text-decoration-none">
-                    <li><a class="text-right pl-1 pr-1" href="user-settings"><i class="fas fa-user-cog"></i></a></li>
+                    <li><a class="text-right pl-1 pr-1" href="user-edit"><i class="fas fa-user-cog"></i></a></li>
                     <li><a class="text-right pl-1 pr-1" href="logout"><i class="fas fa-sign-out-alt"></i></a></li>
                 </ul>
             </div>

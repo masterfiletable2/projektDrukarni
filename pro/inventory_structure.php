@@ -2,7 +2,7 @@
 use Phppot\Material;
 use Phppot\Inventory;
 require_once('functions.php');
-require_once('template/nav.php');
+require_once('template/nav_template.php');
 require_once('template/inventory_template.php');
 require_once('template/material_template.php');
 

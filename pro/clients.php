@@ -1,7 +1,7 @@
 <?php
 use Phppot\Users;
 require_once('functions.php');
-require_once('template/nav.php');
+require_once('template/nav_template.php');
 require_once('template/users_template.php');
 
 

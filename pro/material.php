@@ -1,7 +1,7 @@
 <?php
 use Phppot\Material;
 require_once('functions.php');
-require_once('template/nav.php');
+require_once('template/nav_template.php');
 require_once('template/material_template.php');
 
 

@@ -42,7 +42,11 @@ class Material
 			$materialRows[] = $material['id'];
 			$materialRows[] = $material['name'];
 			$materialRows[] = $material['materialname'];
-			$materialRows[] = $material['quantity'];;
+			$materialRows[] = $material['matrix'];
+			$materialRows[] = $material['refinement'];
+			$materialRows[] = $material['quantity'];
+			$materialRows[] = '<button class="btn btn-info"><i class="fas fa-info-circle"></i></button><div class="info">'.$material['notes'].'</div>';
+
 			$materialRows[] = '
 			<button type="button" name="update" id="'.$material["id"].'" class="btn btn-warning btn-xs updateMaterialBtn"><i class="fas fa-pen-square"></i></button>
 			<button type="button" name="delete" id="'.$material["id"].'" class="btn btn-danger btn-xs deleteMaterialBtn" data-status="'.$material["status"].'"><i class="fas fa-trash-alt"></i></button>
@@ -75,8 +79,8 @@ class Material
 	}
 	public function saveMaterial() {		
 		$sqlInsert = "
-			INSERT INTO ".$this->materialTable."(inventoryid, materialname,quantity) 
-			VALUES ('".$_POST["inventoryid"]."', '".$_POST['materialname']."', '".$_POST['quantity']."')";		
+			INSERT INTO ".$this->materialTable."(inventoryid, materialname,quantity,matrix,refinement,notes) 
+			VALUES ('".$_POST["inventoryid"]."', '".$_POST['materialname']."', '".$_POST['quantity']."', '".$_POST['matrix']."', '".$_POST['refinement']."', '".$_POST['notes']."')";		
             mysqli_query($this->ds->getConnection(), $sqlInsert);
 		echo 'New Material Added';
 	}	
@@ -90,7 +94,7 @@ class Material
 	}	
 	public function updateMaterial() {		
 		if($_POST['id']) {	
-			$sqlUpdate = "UPDATE ".$this->materialTable." SET materialname = '".$_POST['materialname']."', inventoryid='".$_POST['inventoryid']."', quantity='".$_POST['quantity']."'  WHERE id = '".$_POST["id"]."'";
+			$sqlUpdate = "UPDATE ".$this->materialTable." SET materialname = '".$_POST['materialname']."', inventoryid='".$_POST['inventoryid']."', quantity='".$_POST['quantity']."', matrix='".$_POST['matrix']."', refinement='".$_POST['refinement']."', notes='".$_POST['notes']."'  WHERE id = '".$_POST["id"]."'";
 				mysqli_query($this->ds->getConnection(), $sqlUpdate);
 			echo 'Material Update';
 		}	
