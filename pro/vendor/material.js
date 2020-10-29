@@ -9,8 +9,9 @@ $(function(){
 		});
 		$('#materialForm')[0].reset();
 		$('.modal-title').html("<i class='fa fa-plus'></i> Add Material");
-		$('#action').val('Add');
-		$('#btn_action').val('addMaterial');
+		$('#action').val('Dodaj');
+		$('#btn_action_material').val('addMaterial');
+
 	});
 	
 	var materialdataTable = $('#materialList').DataTable({
@@ -27,7 +28,6 @@ $(function(){
 		},
 		"columnDefs":[
 			{
-				"targets":[4, 5],
 				"orderable":false,
 			},
 		],
@@ -70,13 +70,13 @@ $(function(){
 		})
 	});
 
-	$(document).on('click', '.update', function(){
+	$(document).on('click', '.updateMaterialBtn', function(){
 		var id = $(this).attr("id");
-		var btn_action = 'getMaterial';
+		var btn_action_material = 'getMaterial';
 		$.ajax({
 			url:'action.php',
 			method:"POST",
-			data:{id:id, btn_action:btn_action},
+			data:{id:id, btn_action_material:btn_action_material},
 			dataType:"json",
 			success:function(data){
 				$('#materialModal').modal({
@@ -88,22 +88,24 @@ $(function(){
             });
 				$('#inventoryid').val(data.inventoryid);
 				$('#materialname').val(data.materialname);
+				$('#quantity').val(data.quantity);
+
 				$('#id').val(id);
 				$('#action').val('Edytuj');
-				$('#btn_action').val('updateMaterial');
+				$('#btn_action_material').val('updateMaterial');
 			}
 		})
 	});
 
-	$(document).on('click','.delete', function(){
+	$(document).on('click','.deleteMaterialBtn', function(){
 		var id = $(this).attr("id");
 		var status  = $(this).data('status');
-		var btn_action = 'deleteMaterial';
+		var btn_action_material = 'deleteMaterial';
 		if(confirm("Jesteś pewny, że chcesz usunąć Materiał?")) {
 			$.ajax({
 				url:"action.php",
 				method:"POST",
-				data:{id:id, status:status, btn_action:btn_action},
+				data:{id:id, status:status, btn_action_material:btn_action_material},
 				success:function(data){					
 					materialdataTable.ajax.reload();
 				}

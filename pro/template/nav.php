@@ -40,7 +40,12 @@ function nav(){
             </li>
             <li><a href="#"><i class="fas fa-sticky-note"></i> Zlecenia</a></li>
             <li><a href="#"><i class="fas fa-tools"></i> Narzędzia</a></li>
-            <li><a href="./users"><i class="fas fa-users"></i>Użytkownicy</a></li>';
+            <li><a href="./users"><i class="fas fa-users"></i>Użytkownicy</a>
+                <ul>
+                <li><a href="./workers">Pracownicy</a></li>
+                <li><a href="./clients">Klienci</a></li>
+                </ul>
+            </li>';
             
 
         }

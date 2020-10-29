@@ -49,8 +49,11 @@ public function getInventoryList(){
         $inventoryRows[] = $inventory['inventoryid'];
         $inventoryRows[] = $inventory['name'];
         $inventoryRows[] = $status;			
-        $inventoryRows[] = '<button type="button" name="update" id="'.$inventory["inventoryid"].'" class="btn btn-warning btn-xs update"><i class="fas fa-pen-square"></i></button>';
-        $inventoryRows[] = '<button type="button" name="delete" id="'.$inventory["inventoryid"].'" class="btn btn-danger btn-xs delete" ><i class="fas fa-trash-alt"></i></button>';
+        $inventoryRows[] = '
+        <button type="button" name="update" id="'.$inventory["inventoryid"].'" class="btn btn-warning btn-xs updateInventoryBtn"><i class="fas fa-pen-square"></i></button>
+        <button type="button" name="delete" id="'.$inventory["inventoryid"].'" class="btn btn-danger btn-xs deleteInventoryBtn" ><i class="fas fa-trash-alt"></i></button>
+        ';
+        
         $inventoryData[] = $inventoryRows;
     }
     $output = array(

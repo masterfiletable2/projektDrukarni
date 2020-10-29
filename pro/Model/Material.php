@@ -24,7 +24,6 @@ class Material
 		if(!empty($_POST["search"]["value"])){
 			$sqlQuery .= 'WHERE b.materialname LIKE "%'.$_POST["search"]["value"].'%" ';
 			$sqlQuery .= 'OR c.name LIKE "%'.$_POST["search"]["value"].'%" ';
-			$sqlQuery .= 'OR b.status LIKE "%'.$_POST["search"]["value"].'%" ';		
 		}
 		if(!empty($_POST["order"])){
 			$sqlQuery .= 'ORDER BY '.$_POST['order']['0']['column'].' '.$_POST['order']['0']['dir'].' ';
@@ -38,19 +37,18 @@ class Material
 		$numRows = mysqli_num_rows($result);
 		$materialData = array();	
 		while( $material = mysqli_fetch_assoc($result) ) {			
-			$status = '';
-			if($material['status'] == 'active')	{
-				$status = '<span class="label label-success">Aktywny</span>';
-			} else {
-				$status = '<span class="label label-danger">Nieaktywny</span>';
-			}
+			
 			$materialRows = array();
 			$materialRows[] = $material['id'];
 			$materialRows[] = $material['name'];
 			$materialRows[] = $material['materialname'];
-			$materialRows[] = $status;
-			$materialRows[] = '<button type="button" name="update" id="'.$material["id"].'" class="btn btn-warning btn-xs update"><i class="fas fa-pen-square"></i></button>';
-			$materialRows[] = '<button type="button" name="delete" id="'.$material["id"].'" class="btn btn-danger btn-xs delete" data-status="'.$material["status"].'"><i class="fas fa-trash-alt"></i></button>';
+			$materialRows[] = $material['quantity'];;
+			$materialRows[] = '
+			<button type="button" name="update" id="'.$material["id"].'" class="btn btn-warning btn-xs updateMaterialBtn"><i class="fas fa-pen-square"></i></button>
+			<button type="button" name="delete" id="'.$material["id"].'" class="btn btn-danger btn-xs deleteMaterialBtn" data-status="'.$material["status"].'"><i class="fas fa-trash-alt"></i></button>
+			';
+			
+			
 			$materialData[] = $materialRows;
 		}
 		$output = array(
@@ -77,8 +75,8 @@ class Material
 	}
 	public function saveMaterial() {		
 		$sqlInsert = "
-			INSERT INTO ".$this->materialTable."(inventoryid, materialname) 
-			VALUES ('".$_POST["inventoryid"]."', '".$_POST['materialname']."')";		
+			INSERT INTO ".$this->materialTable."(inventoryid, materialname,quantity) 
+			VALUES ('".$_POST["inventoryid"]."', '".$_POST['materialname']."', '".$_POST['quantity']."')";		
             mysqli_query($this->ds->getConnection(), $sqlInsert);
 		echo 'New Material Added';
 	}	
@@ -92,7 +90,7 @@ class Material
 	}	
 	public function updateMaterial() {		
 		if($_POST['id']) {	
-			$sqlUpdate = "UPDATE ".$this->materialTable." SET materialname = '".$_POST['materialname']."', inventoryid='".$_POST['inventoryid']."' WHERE id = '".$_POST["id"]."'";
+			$sqlUpdate = "UPDATE ".$this->materialTable." SET materialname = '".$_POST['materialname']."', inventoryid='".$_POST['inventoryid']."', quantity='".$_POST['quantity']."'  WHERE id = '".$_POST["id"]."'";
 				mysqli_query($this->ds->getConnection(), $sqlUpdate);
 			echo 'Material Update';
 		}	

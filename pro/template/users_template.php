@@ -17,17 +17,22 @@ function users_template(){
                 <div class="row">
                     <div class="col-sm-12 table-responsive">
                         <table id="usersList" class=" table table-bordered table-striped">
-                            <thead><tr>
-                                <th>ID Użytkownika</th>
-                                <th>Nazwa Użytkownika</th>
-                                <th>Typ Użytkownika</th>
-                                <th>Email</th>
-                                <th>Nr komórkowy Użytkownika</th>
-                                <th>Data utworzenia konta</th>
-                                <th>Edytuj</th>
-                                <th>Usuń</th>
-                                
-                            </tr></thead>
+                            <thead>
+                                <tr>
+                                    <th>ID </th>
+                                    <th>Avatar</th>
+                                    <th>Nazwa Użytkownika</th>
+                                    <th>Email</th>
+                                    <th class="type_of_user">Typ Użytkownika</th>
+                                    <th>Nr komórkowy</th>
+                                    <th>NIP</th>
+                                    <th>Nazwa Firmy</th>
+                                    <th>Adres Firmy</th>
+                                    <th>Data rejestracji</th>
+                                    <th>Status</th>
+                                    <th>Opcje</th>
+                                </tr>
+                            </thead>
                         </table>
                     </div>
                 </div>
@@ -35,14 +40,63 @@ function users_template(){
         </div>
     </div>
 </div>
+
 <div id="usersModal" class="modal .fade">
     <div class="modal-dialog">
         <form method="post" id="usersForm">
             <div class="modal-content">
                
                 <div class="modal-body">
-                    <label>Nazwa Użytkownika</label>
-                    <input type="text" name="users" id="users" class="form-control" required />
+                    <div class="form-group">
+                        <label>Nazwa Użytkownika</label>
+                        <input type="text" name="username" id="username" class="form-control" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Hasło</label>
+                        <input type="text" name="password" id="password" class="form-control" required />
+                    </div>
+
+                     <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" name="email" id="email" class="form-control" required />
+                    </div>
+                   
+
+                     <div class="form-group">
+                     <label>Typ użytkownika</label>
+                     <select name="type_of_user" id="type_of_user" class="form-control" required>
+                                <option value="">-</option>
+                                <option value="admin">Admin</option>
+                                <option value="worker">Pracownik</option>
+                                <option value="client">Klient</option>
+                    </select>
+                  </div>
+                   
+                   <div class="form-group">
+                        <label>Numer komórkowy</label>
+                        <input type="text" name="mobile" id="mobile" class="form-control" required />
+                     </div>
+
+                     <div class="form-group">
+                        <label>NIP</label>
+                        <input type="text" name="nip" id="nip" class="form-control" required />
+                     </div>
+
+                     <div class="form-group">
+                        <label>Nazwa firmy</label>
+                        <input type="text" name="company" id="company" class="form-control" required />
+                     </div>
+
+                     <div class="form-group">
+                        <label>Adres Firmy</label>
+                        <input type="text" name="adress" id="adress" class="form-control" required />
+                     </div>
+
+
+                    
+                    
+
+                  
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="usersId" id="usersId"/>
@@ -55,5 +109,6 @@ function users_template(){
     </div>
 </div>';
 }
+
 
 ?>

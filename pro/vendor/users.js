@@ -1,7 +1,9 @@
 $(function(){
 
-	var usersData = $('#usersList').DataTable({
+
 	
+	var usersData = $('#usersList').DataTable({
+		
 		"processing":true,
 		"serverSide":true,
 		stateSave: true,
@@ -30,8 +32,15 @@ $(function(){
 		
 		"lengthChange": true,
 		"lengthMenu": [ 5, 10, 50,  100 ],
+		
+		// drawCallback:function(){
+			
+		// 	$(this).find("td:contains('client')").hide()
+		// $(this).find("td:contains('client')").hide()
 
-
+			
+			
+		// 	}
 	});	
 	$(document).on('submit','#usersForm', function(event){
 		event.preventDefault();
@@ -66,6 +75,8 @@ $(function(){
 		$('#btn_action').val('usersAdd');
 	});		
 	
+
+	
 	$(document).on('click', '.update', function(){
 		var usersId = $(this).attr("id");
 		var btnAction = 'getUsers';
@@ -77,25 +88,49 @@ $(function(){
 			success:function(data) {
 				$('#usersModal').modal({
 					showClose: false,
+			closeExisting: true,
+
+			fadeDuration: 200,
+  			fadeDelay: 0.50
 				});
-				$('#users').val(data.name);
+
+
+				
+				$('#username').val(data.username);
+
+				$('#email').val(data.email);
+				$('#type_of_user').val(data.type_of_user);
+				$('#mobile').val(data.mobile);
+				$('#nip').val(data.nip);
+				$('#company').val(data.company);
+				$('#adress').val(data.adress);
+
+
 				$('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Edytuj Użytkownika");
 				$('#usersId').val(usersId);
 				$('#action').val('Edytuj');
 				$('#btn_action').val("updateUsers");
 			}
 		})
+
+
+
 	});	
+
+
+
+
+
+	
 	$(document).on('click', '.delete', function(){
 		var usersId = $(this).attr('id');
-		var status = $(this).data("status");
 		var btn_action = 'deleteUsers';
 		if(confirm("Czy jesteś pewny, że chcesz usunąć Użytkownika?")) {
 
 			$.ajax({
 				url:"action.php",
 				method:"POST",
-				data:{usersId:usersId, status:status, btn_action:btn_action},
+				data:{usersId:usersId,btn_action:btn_action},
 				success:function(data) {
 					$('#alert_action').fadeIn().html('<div class="alert alert-info">'+data+'</div>');
 					usersData.ajax.reload();
@@ -105,4 +140,79 @@ $(function(){
 			return false;
 		}
 	});	
- });
+
+
+	$(document).on('click', '.status', function(){
+		var usersId = $(this).attr('id');
+		var status = $(this).val();
+		var btn_action = 'toggleStatus';
+		
+
+			$.ajax({
+				url:"action.php",
+				method:"POST",
+				data:{usersId:usersId, status:status, btn_action:btn_action},
+				success:function(data) {
+					$('#alert_action').fadeIn().html('<div class="alert alert-info">'+data+'</div>');
+					usersData.ajax.reload();
+					
+				}
+			})
+		
+	});	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+//Separation of users Types Roles
+
+
+$( document ).ajaxComplete(function() {
+
+
+  function getTypeOfUser(typeOfUser){
+    var type_of_user = $(".type_of_user").index() +1
+
+    $("td:nth-child("+type_of_user+")").each(function(){
+
+
+    if($(this).text() == typeOfUser) {
+    $(this).parent().remove()
+    }
+    })
+  }
+
+
+  getTypeOfUser("admin")
+  
+  
+if(window.location.pathname.split("/").pop() == "workers"){
+  getTypeOfUser("client")
+$("#usersAdd").remove()
+
+}
+
+if(window.location.pathname.split("/").pop() == "clients"){
+  getTypeOfUser("worker")
+$("#usersAdd").remove()
+
+}
+
+
+})
+
+
+})

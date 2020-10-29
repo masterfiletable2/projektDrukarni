@@ -21,12 +21,11 @@ function material_template($thisMaterial){
                 	<table id="materialList" class="dataTable table table-bordered table-striped">
                 		<thead>
 							<tr>
-								<th>ID Materiału</th>
+								<th>ID</th>
 								<th>Magazyn</th>
-								<th>Ilość materiału</th>
-								<th>Status</th>
-								<th>Edytuj</th>
-								<th>Usuń</th>
+								<th>Nazwa materiału</th>
+								<th>Ilość</th>
+								<th>Opcje</th>
 							</tr>
 						</thead>
                 	</table>
@@ -40,7 +39,8 @@ function material_template($thisMaterial){
     			<div class="modal-content">
     				
     				<div class="modal-body">
-    					<div class="form-group">
+						<div class="form-group">
+						<label>Wybierz magazyn</label>
     						<select name="inventoryid" id="inventoryid" class="form-control" required>
                                 <option value="">Wybierz magazyn</option>';
                                 
@@ -50,14 +50,22 @@ function material_template($thisMaterial){
                         echo '
                         </select>
     					</div>
-    					<div class="form-group">
-							<label>Wprowadź ilość materiału</label>
-							<input type="number" min="1" max="999" name="materialname" id="materialname" class="form-control" required />
+    				
+						
+						<div class="form-group">
+							<label>Wprowadź nazwę dla materiału</label>
+							<input type="text" name="materialname" id="materialname" class="form-control" required />
 						</div>
+
+						<div class="form-group">
+							<label>Wprowadź ilość materiału</label>
+							<input type="number" min="0" max="999" name="quantity" id="quantity" class="form-control" required />
+						</div>
+
     				</div>
     				<div class="modal-footer">
     					<input type="hidden" name="id" id="id" />
-    					<input type="hidden" name="btn_action" id="btn_action" />
+    					<input type="hidden" name="btn_action_material" id="btn_action_material" />
     					<input type="submit" name="action" id="action" class="btn btn-info" value="Dodaj" />
                         <a rel="modal:close" class="btn btn-default close-modal ">Anuluj</a>
     				</div>

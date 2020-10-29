@@ -59,7 +59,6 @@ $material = new Material();
 	
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 
-<!-- <script src="vendor/dataTables.bootstrap.min.js"></script>	 -->
 
 <script src="vendor/jquery.dataTables.min.js"></script>
 <script src="vendor/material.js"></script>

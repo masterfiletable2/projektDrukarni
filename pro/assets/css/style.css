@@ -102,7 +102,7 @@ table {
 
 }
 .navbar li a:hover{
-	color:#000;
+	color:#D35400;
 }
 .navbar li i {
 	padding-right: 1rem;
@@ -117,4 +117,14 @@ table {
 	background: #D35400;
 	color:#fff
 }
+
+.navbar .selected a:hover{
+	color: #fff;
+}
+
+
+
+
+
+
 

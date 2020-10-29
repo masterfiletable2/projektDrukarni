@@ -15,13 +15,16 @@ if (! empty($_POST["login-btn"])) {
     require_once __DIR__ . '/Model/Member.php';
     $member = new Member();
 	$loginResult = $member->loginMember();
+	header("Location: ./logout");
 	
 }
 
 
 
 
-if (isset($_SESSION["username"])) {
+
+
+if (isset($_SESSION["username"]) && $_SESSION["status"] == "active") {
 
 $url = "./dashboard";
 header("Location: $url");
@@ -84,6 +87,8 @@ session_write_close();
 					<div class="buttons d-flex flex-column mt-4">
 						<input class="btn btn-primary mt-2 mb-2" type="submit" name="login-btn" id="login-btn" value="Zaloguj">
 						<a class="btn btn-secondary mt-2 mb-2" href="user-registration.php">Zarejestruj się</a>
+						<a class="btn btn-secondary mt-2 mb-2" href="user-password-reset.php">Przypomnij hasło</a>
+
 					</div>
 					
 					

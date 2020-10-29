@@ -86,3 +86,18 @@ if($("#avatar").val() != ""){
 
 
 
+//If status is inactive
+$( document ).ajaxComplete(function() {
+  $(".row-disabled").parents("tr").css("opacity","0.5")
+})
+
+
+
+//remove from Datatables pagination info
+$( document ).ajaxComplete(function() {
+$(".dataTables_info,.dataTables_paginate").remove();
+})
+
+
+
+

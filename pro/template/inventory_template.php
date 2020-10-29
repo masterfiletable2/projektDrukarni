@@ -21,8 +21,7 @@ function inventory_template(){
                                 <th>ID Magazynu</th>
                                 <th>Nazwa Magazynu</th>
                                 <th>Status</th>
-                                <th></th>
-                                <th></th>
+                                <th>Opcje</th>
                             </tr></thead>
                         </table>
                     </div>
@@ -42,7 +41,7 @@ function inventory_template(){
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="inventoryId" id="inventoryId"/>
-                    <input type="hidden" name="btn_action" id="btn_action"/>
+                    <input type="hidden" name="btn_action_inventory" id="btn_action_inventory"/>
                     <input type="submit" name="action" id="action" class="btn btn-info" value="Dodaj" />
                     <a rel="modal:close" class="btn btn-default close-modal ">Anuluj</a>
                 </div>
