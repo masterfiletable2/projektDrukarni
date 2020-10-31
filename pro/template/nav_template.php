@@ -22,36 +22,61 @@ function nav(){
                 </ul>
             </div>
 
-        <ul class="navbar flex-column align-items-start p-0">
-        ';
-  
-  
-        echo '
-            <li><a href="./dashboard"><i class="fas fa-th"></i> Pulpit</a></li>
-            ';
-        
+
+';
         if($type_of_user == "admin"){
-        echo '
+            echo '
+        <ul class="navbar flex-column align-items-start p-0">
+              
+            <li><a href="./dashboard"><i class="fas fa-th"></i> Pulpit</a></li>
             <li><a href="./inventory_structure"><i class="fas fa-warehouse"></i> Magazyn</a>
             <ul>
                 <li><a href="./inventory">Lista magazynów</a></li>
                 <li><a href="./material">Materiały</a></li>
             </ul>
             </li>
-            <li><a href="#"><i class="fas fa-sticky-note"></i> Zlecenia</a></li>
+            <li><a href="./orders"><i class="fas fa-sticky-note"></i> Zlecenia</a>
+                <ul>
+                    <li><a href="./orders-add"><i class="fas fa-sticky-note"></i> Dodaj zlecenie</a></li>
+                    <li><a href="./orders-new"><i class="fas fa-sticky-note"></i> Nowe zlecenia </a></li>
+                    <li><a href="./orders-inprogress"><i class="fas fa-sticky-note"></i> Zlecenia w trakcie</a></li>
+                    <li><a href="./orders-closed"><i class="fas fa-sticky-note"></i> Zlecenia zrealizowane</a></li>
+                </ul>
+            </li>
             <li><a href="#"><i class="fas fa-tools"></i> Narzędzia</a></li>
             <li><a href="./users"><i class="fas fa-users"></i>Użytkownicy</a>
                 <ul>
                 <li><a href="./workers">Pracownicy</a></li>
                 <li><a href="./clients">Klienci</a></li>
                 </ul>
-            </li>';
-            
+            </li>
+        </ul>';
+    }
 
-        }
+
+
+    if($type_of_user == "client"){
         echo '
-        </ul>
+    <ul class="navbar flex-column align-items-start p-0">
+          
+        <li><a href="./dashboard"><i class="fas fa-th"></i> Pulpit</a></li>
+       
+        <li><a href="./orders"><i class="fas fa-sticky-note"></i> Zlecenia</a>
+            <ul>
+                <li><a href="./orders-add"><i class="fas fa-sticky-note"></i> Dodaj zlecenie</a></li>
+                <li><a href="./orders"><i class="fas fa-sticky-note"></i> Moje zlecenia </a></li>
+                <li><a href="./orders"><i class="fas fa-sticky-note"></i> Moje zrealizowane zlecenia</a></li>
+            </ul>
+        </li>
+       
+    </ul>';
+}
 
+
+
+
+
+    echo '
         </nav>';
 }
 

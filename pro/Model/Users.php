@@ -24,7 +24,7 @@ class Users
 public function getUsersList(){		
     $sqlQuery = "SELECT * FROM ".$this->usersTable." ";
     if(!empty($_POST["search"]["value"])){
-        $sqlQuery .= 'WHERE (name LIKE "%'.$_POST["search"]["value"].'%" ';
+        $sqlQuery .= 'WHERE username LIKE "%'.$_POST["search"]["value"].'%" ';
        		
     }
     if(!empty($_POST["order"])){

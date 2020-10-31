@@ -83,12 +83,12 @@ $(function(){
 	});
 
 	$(document).on('click', '.updateMaterialBtn', function(){
-		var id = $(this).attr("id");
+		var id_material = $(this).attr("id");
 		var btn_action_material = 'getMaterial';
 		$.ajax({
 			url:'action.php',
 			method:"POST",
-			data:{id:id, btn_action_material:btn_action_material},
+			data:{id_material:id_material, btn_action_material:btn_action_material},
 			dataType:"json",
 			success:function(data){
 				$('#materialModal').modal({
@@ -105,22 +105,23 @@ $(function(){
 				$('#refinement').val(data.refinement);
 				$('#notes').val(data.notes);
 
-				$('#id').val(id);
+				$('#id_material').val(id_material);
 				$('#action').val('Edytuj');
 				$('#btn_action_material').val('updateMaterial');
+			
 			}
 		})
 	});
 
 	$(document).on('click','.deleteMaterialBtn', function(){
-		var id = $(this).attr("id");
+		var id_material = $(this).attr("id");
 		var status  = $(this).data('status');
 		var btn_action_material = 'deleteMaterial';
 		if(confirm("Jesteś pewny, że chcesz usunąć Materiał?")) {
 			$.ajax({
 				url:"action.php",
 				method:"POST",
-				data:{id:id, status:status, btn_action_material:btn_action_material},
+				data:{id_material:id_material, status:status, btn_action_material:btn_action_material},
 				success:function(data){					
 					materialdataTable.ajax.reload();
 				}

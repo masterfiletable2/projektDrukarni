@@ -1,39 +1,36 @@
 <?php
-use Phppot\Inventory;
+use Phppot\Orders;
 require_once('functions.php');
 require_once('template/nav_template.php');
-require_once('template/inventory_template.php');
+require_once('template/orders_template.php');
 
 
 session_start();
-if (isset($_SESSION["username"]) && $_SESSION['type_of_user'] == "admin") {
-
-
-   
+if (isset($_SESSION["username"])) {
 
     session_write_close();
 } else {
  
-    // session_unset();
-    // session_write_close();
+    session_unset();
+    session_write_close();
     $url = "./index";
     header("Location: $url");
 }
 
 
-
-require_once('./Model/Inventory.php');
-$inventory = new Inventory();
+require_once('./Model/Orders.php');
+$orders = new Orders();
 ?>
 
 
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<title>Lista Magazynów</title>
+<title>Lista materiałów</title>
+<link rel="stylesheet" href="assets/css/dataTables.bootstrap.min.css" />
+
 <?php include_styles()?>
 
-<link rel="stylesheet" href="assets/css/dataTables.bootstrap.min.css" />
 
 </head>
 <body>
@@ -47,7 +44,8 @@ $inventory = new Inventory();
        <?php nav() ?>
 
         <section class="col-md-9 bg-light">
-            <?php inventory_template(); ?>
+            
+            <?php orders_template($orders,"ordersListNew"); ?>
 
         </section>
     </div>
@@ -60,10 +58,7 @@ $inventory = new Inventory();
 
 
 <script src="vendor/jquery.dataTables.min.js"></script>
-<!-- <script src="vendor/dataTables.bootstrap.min.js"></script>	 -->
-
-
-<script src="vendor/inventory.js"></script>
+<script src="vendor/orders.js"></script>
 	
 </div>	
 

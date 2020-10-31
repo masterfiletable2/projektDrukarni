@@ -28,7 +28,7 @@ class Material
 		if(!empty($_POST["order"])){
 			$sqlQuery .= 'ORDER BY '.$_POST['order']['0']['column'].' '.$_POST['order']['0']['dir'].' ';
 		} else {
-			$sqlQuery .= 'ORDER BY b.id DESC ';
+			$sqlQuery .= 'ORDER BY b.id_material DESC ';
 		}
 		if($_POST["length"] != -1){
 			$sqlQuery .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
@@ -39,7 +39,7 @@ class Material
 		while( $material = mysqli_fetch_assoc($result) ) {			
 			
 			$materialRows = array();
-			$materialRows[] = $material['id'];
+			$materialRows[] = $material['id_material'];
 			$materialRows[] = $material['name'];
 			$materialRows[] = $material['materialname'];
 			$materialRows[] = $material['matrix'];
@@ -48,8 +48,8 @@ class Material
 			$materialRows[] = '<button class="btn btn-info"><i class="fas fa-info-circle"></i></button><div class="info">'.$material['notes'].'</div>';
 
 			$materialRows[] = '
-			<button type="button" name="update" id="'.$material["id"].'" class="btn btn-warning btn-xs updateMaterialBtn"><i class="fas fa-pen-square"></i></button>
-			<button type="button" name="delete" id="'.$material["id"].'" class="btn btn-danger btn-xs deleteMaterialBtn" data-status="'.$material["status"].'"><i class="fas fa-trash-alt"></i></button>
+			<button type="button" name="update" id="'.$material["id_material"].'" class="btn btn-warning btn-xs updateMaterialBtn"><i class="fas fa-pen-square"></i></button>
+			<button type="button" name="delete" id="'.$material["id_material"].'" class="btn btn-danger btn-xs deleteMaterialBtn" data-status="'.$material["status"].'"><i class="fas fa-trash-alt"></i></button>
 			';
 			
 			
@@ -87,14 +87,14 @@ class Material
 	public function getMaterial(){
 		$sqlQuery = "
 			SELECT * FROM ".$this->materialTable." 
-			WHERE id = '".$_POST["id"]."'";
+			WHERE id_material = '".$_POST["id_material"]."'";
 		$result = mysqli_query($this->ds->getConnection(), $sqlQuery);
 		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 		echo json_encode($row);
 	}	
 	public function updateMaterial() {		
-		if($_POST['id']) {	
-			$sqlUpdate = "UPDATE ".$this->materialTable." SET materialname = '".$_POST['materialname']."', inventoryid='".$_POST['inventoryid']."', quantity='".$_POST['quantity']."', matrix='".$_POST['matrix']."', refinement='".$_POST['refinement']."', notes='".$_POST['notes']."'  WHERE id = '".$_POST["id"]."'";
+		if($_POST['id_material']) {	
+			$sqlUpdate = "UPDATE ".$this->materialTable." SET materialname = '".$_POST['materialname']."', inventoryid='".$_POST['inventoryid']."', quantity='".$_POST['quantity']."', matrix='".$_POST['matrix']."', refinement='".$_POST['refinement']."', notes='".$_POST['notes']."'  WHERE id_material = '".$_POST["id_material"]."'";
 				mysqli_query($this->ds->getConnection(), $sqlUpdate);
 			echo 'Material Update';
 		}	
@@ -102,9 +102,9 @@ class Material
 	public function deleteMaterial(){
 		$sqlQuery = "
 			DELETE FROM ".$this->materialTable." 
-			WHERE id = '".$_POST["id"]."'";	
+			WHERE id_material = '".$_POST["id_material"]."'";	
             mysqli_query($this->ds->getConnection(), $sqlQuery);	
-	}
+		}
 
 
 

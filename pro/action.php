@@ -1,12 +1,50 @@
 <?php
+use Phppot\Users;
+
 use Phppot\Inventory;
 use Phppot\Material;
-use Phppot\Users;
+use Phppot\Orders;
+
 use Phppot\Php_Mailer;
 
 
 
 session_start();
+
+
+
+
+
+
+// Users management
+
+require_once __DIR__ . '/Model/Users.php';
+	$users = new Users();
+
+
+if(!empty($_POST['action']) && $_POST['action'] == 'usersList') {
+	$users->getUsersList();
+
+}
+
+
+if(!empty($_POST['btn_action']) && $_POST['btn_action'] == 'usersAdd'){
+	$users->saveUsers();
+}
+if(!empty($_POST['btn_action']) && $_POST['btn_action'] == 'getUsers'){
+	$users->getUsers();
+	
+}
+if(!empty($_POST['btn_action']) && $_POST['btn_action'] == 'updateUsers'){
+	$users->updateUsers();
+}
+if(!empty($_POST['btn_action']) && $_POST['btn_action'] == 'deleteUsers'){
+	$users->deleteUsers();
+}
+
+if(!empty($_POST['btn_action']) && $_POST['btn_action'] == 'toggleStatus'){
+	$users->toggleStatus();
+}
 
 
 
@@ -68,35 +106,63 @@ if(!empty($_POST['btn_action_material']) && $_POST['btn_action_material'] == 'de
 
 
 
-// Users management
-
-require_once __DIR__ . '/Model/Users.php';
-	$users = new Users();
 
 
-if(!empty($_POST['action']) && $_POST['action'] == 'usersList') {
-	$users->getUsersList();
 
+
+// Orders management
+
+require_once __DIR__ . '/Model/Orders.php';
+	$orders = new Orders();
+
+// all Listings
+if(!empty($_POST['action']) && $_POST['action'] == 'ordersList') {
+	$orders->getOrdersList("");
 }
 
 
-if(!empty($_POST['btn_action']) && $_POST['btn_action'] == 'usersAdd'){
-	$users->saveUsers();
+// all New Listings
+if(!empty($_POST['action']) && $_POST['action'] == 'ordersListNew') {
+	$orders->getOrdersList("new");
 }
-if(!empty($_POST['btn_action']) && $_POST['btn_action'] == 'getUsers'){
-	$users->getUsers();
+
+
+// all In progress Listings
+if(!empty($_POST['action']) && $_POST['action'] == 'ordersListInProgress') {
+	$orders->getOrdersList("during");
+}
+
+
+// all closed listings
+if(!empty($_POST['action']) && $_POST['action'] == 'ordersListClosed') {
+	$orders->getOrdersList("closed");
+}
+
+
+if(!empty($_POST['btn_action_orders']) && $_POST['btn_action_orders'] == 'addOrder'){
+	$orders->saveOrders();
+}
+
+
+
+if(!empty($_POST['btn_action_orders']) && $_POST['btn_action_orders'] == 'addOrders'){
+	$orders->saveOrders();
+}
+if(!empty($_POST['btn_action_orders']) && $_POST['btn_action_orders'] == 'getOrders'){
+	$orders->getOrders();
 	
 }
-if(!empty($_POST['btn_action']) && $_POST['btn_action'] == 'updateUsers'){
-	$users->updateUsers();
+if(!empty($_POST['btn_action_orders']) && $_POST['btn_action_orders'] == 'updateOrders'){
+	$orders->updateOrders();
 }
-if(!empty($_POST['btn_action']) && $_POST['btn_action'] == 'deleteUsers'){
-	$users->deleteUsers();
+if(!empty($_POST['btn_action_orders']) && $_POST['btn_action_orders'] == 'deleteOrders'){
+	$orders->deleteOrders();
 }
 
-if(!empty($_POST['btn_action']) && $_POST['btn_action'] == 'toggleStatus'){
-	$users->toggleStatus();
-}
+// if(!empty($_POST['btn_action']) && $_POST['btn_action'] == 'toggleStatus'){
+// 	$orders->toggleStatus();
+// }
+
 
 
 

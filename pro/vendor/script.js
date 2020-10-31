@@ -112,11 +112,24 @@ $( document ).ajaxComplete(function() {
 
 
 
-$(".btn-info").click(function(){
-  $(".info").toggle()
-})
+$(".btn-info").click(function(e){
+
+ 
+
+$(this).next(".info").toggle()
+
+
+
 
 })
 
+})
 
+
+$("#action").click(function(){
+
+// if(confirm("Czy aby na pewno chcesz podjąc taką decyzję?") ==false ) {
+// return false
+// }
+})
 

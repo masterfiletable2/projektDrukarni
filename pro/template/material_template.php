@@ -88,7 +88,7 @@ function material_template($thisMaterial){
 
     				</div>
     				<div class="modal-footer">
-    					<input type="hidden" name="id" id="id" />
+    					<input type="hidden" name="id_material" id="id_material" />
     					<input type="hidden" name="btn_action_material" id="btn_action_material" />
     					<input type="submit" name="action" id="action" class="btn btn-info" value="Dodaj" />
                         <a rel="modal:close" class="btn btn-default close-modal ">Anuluj</a>

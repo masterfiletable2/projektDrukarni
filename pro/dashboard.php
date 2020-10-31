@@ -23,7 +23,7 @@ if (isset($_SESSION["username"])) {
 
 
 require_once('./Model/Dashboard.php');
-$material = new Dashboard();
+$order = new Dashboard();
 
 ?>
 <!DOCTYPE html>
@@ -42,7 +42,7 @@ $material = new Dashboard();
 
         <section class="col-md-9 bg-light">
 
-        <?php dashboard_template($material); ?>
+        <?php dashboard_template($order); ?>
         </section>
     </div>
 
@@ -56,7 +56,7 @@ $material = new Dashboard();
 
 
 <script src="vendor/jquery.dataTables.min.js"></script>
-<script src="vendor/material.js"></script>
+<script src="vendor/order.js"></script>
 
 
 </body>
