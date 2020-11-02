@@ -51,9 +51,13 @@ function users_template(){
                         <label>Nazwa Użytkownika</label>
                         <input type="text" name="username" id="username" class="form-control" required />
                     </div>
+                    
                     <div class="form-group">
-                        <label>Hasło</label>
-                        <input type="text" name="password" id="password" class="form-control" required />
+                        <a class="btn btn-success mb-2" id="showPasswordContent" style="display:none;">Zmień hasło</a>
+                        <div class="content-password" >
+                            <label>Hasło</label>
+                            <input type="text" name="password" id="password" class="form-control" />
+                        </div>
                     </div>
 
                      <div class="form-group">
@@ -66,7 +70,6 @@ function users_template(){
                      <label>Typ użytkownika</label>
                      <select name="type_of_user" id="type_of_user" class="form-control" required>
                                 <option value="">-</option>
-                                <option value="admin">Admin</option>
                                 <option value="worker">Pracownik</option>
                                 <option value="client">Klient</option>
                     </select>

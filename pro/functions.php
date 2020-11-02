@@ -1,6 +1,32 @@
 <?php
 
 
+
+
+
+
+
+
+// if (isset($_SESSION["type_of_user"]) != "client") {
+
+
+//     session_write_close();
+    
+   
+// } else {
+
+
+//     session_unset();
+//     session_write_close();
+
+//     $url = "./index";
+//     header("Location: $url");
+  
+// }
+
+
+
+
 function include_styles(){
     echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">';
     echo '<link rel="stylesheet" href="assets/css/style.css">';

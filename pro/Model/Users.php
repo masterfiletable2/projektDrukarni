@@ -139,9 +139,25 @@ public function getUsers(){
 
 public function updateUsers() {		
     if($_POST['usersId']) {	
-        $sqlUpdate = "UPDATE ".$this->usersTable." SET username = '".$_POST['username']."', password = '".password_hash($_POST["password"], PASSWORD_DEFAULT)."',  email='".$_POST['email']."', type_of_user='".$_POST['type_of_user']."', mobile='".$_POST['mobile']."', nip='".$_POST['nip']."', company='".$_POST['company']."', adress='".$_POST['adress']."' WHERE id_user = '".$_POST["usersId"]."'";
+       
+
+        if($_POST['password'] == ""){
+            $sqlUpdate = "UPDATE ".$this->usersTable." SET username = '".$_POST['username']."',  email='".$_POST['email']."', type_of_user='".$_POST['type_of_user']."', mobile='".$_POST['mobile']."', nip='".$_POST['nip']."', company='".$_POST['company']."', adress='".$_POST['adress']."' WHERE id_user = '".$_POST["usersId"]."'";
+
+            echo " no japiełdole";
+        }
+        else{
+            $sqlUpdate = "UPDATE ".$this->usersTable." SET username = '".$_POST['username']."', password = '".password_hash($_POST["password"], PASSWORD_DEFAULT)."',  email='".$_POST['email']."', type_of_user='".$_POST['type_of_user']."', mobile='".$_POST['mobile']."', nip='".$_POST['nip']."', company='".$_POST['company']."', adress='".$_POST['adress']."' WHERE id_user = '".$_POST["usersId"]."'";
+
+            echo " no a";
+
+        }
             mysqli_query($this->ds->getConnection(), $sqlUpdate);
-        echo 'User Update';
+
+
+        echo $_POST["password"];
+        echo 'User Update2';
+
     }	
 }	
 

@@ -30,11 +30,6 @@ function orders_add_template($thisOrder){
     					</div>
 					
 						
-									<div class="form-group">
-							<label>Na stanie magazynowym</label>
-							<input type="text" name="quantity" id="quantity" class="form-control" required disabled />
-						</div>
-
 
 
 

@@ -1,25 +1,11 @@
 <?php
 use Phppot\Inventory;
+session_start();
+
 require_once('functions.php');
 require_once('template/nav_template.php');
 require_once('template/inventory_template.php');
-
-
-session_start();
-if (isset($_SESSION["username"]) && $_SESSION['type_of_user'] == "admin") {
-
-
-   
-
-    session_write_close();
-} else {
- 
-    // session_unset();
-    // session_write_close();
-    $url = "./index";
-    header("Location: $url");
-}
-
+require_once('redirection.php');
 
 
 require_once('./Model/Inventory.php');
@@ -42,16 +28,18 @@ $inventory = new Inventory();
 
 
 
-  
-<div class="row vh-100 w-100">
-       <?php nav() ?>
+<section class="wrapper">
 
-        <section class="col-md-9 bg-light">
-            <?php inventory_template(); ?>
+<div class="app_nav">
+    <?php nav() ?>
+</div>
 
-        </section>
-    </div>
+<div class="app_dashboard">
+    <h2>Lista magazynów</h2>
+    <?php inventory_template(); ?>
 
+</div>
+</section>
 
     <?php include_scripts() ?>
 
@@ -65,7 +53,5 @@ $inventory = new Inventory();
 
 <script src="vendor/inventory.js"></script>
 	
-</div>	
-
 </body>
 </html>

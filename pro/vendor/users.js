@@ -110,6 +110,11 @@ $(function(){
 				$('#usersId').val(usersId);
 				$('#action').val('Edytuj');
 				$('#btn_action').val("updateUsers");
+
+
+
+
+				
 			}
 		})
 
@@ -215,4 +220,65 @@ $("#usersAdd").remove()
 })
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* user-template - chowanie hasła przy zmianie*/
+
+$("#usersModal #showPasswordContent").click(function(){
+	$(".content-password").toggle();
+	$("#showPasswordContent").show();
+  
+  
+	if($(".content-password").css("display") == "block"){
+	$(".content-password #password").attr("required","")
+  
+  
+	}
+	else{
+	$(".content-password #password").removeAttr("required")
+	
+  
+	}
+  })
+  
+  
+  $( document ).ajaxComplete(function() {
+  
+	
+  
+  
+  
+	$("#usersAdd").click(function(){
+	  $(".content-password").show();
+	  $("#showPasswordContent").hide();
+	  $(".content-password #password").attr("required","")
+  
+	})
+  
+  
+  
+  
+	$(".update").click(function(){
+	  $(".content-password #password").removeAttr("required")
+  
+	  $("#showPasswordContent").show();
+	$(".content-password").hide();
+	$("#showPasswordContent").show();
+	})
+  })
+  
 })

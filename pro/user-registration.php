@@ -1,7 +1,36 @@
 <?php
 use Phppot\Member;
+session_start();
 
 require_once('functions.php');
+
+
+
+if (! empty($_POST["login-btn"])) {
+    require_once __DIR__ . '/Model/Member.php';
+    $member = new Member();
+	$loginResult = $member->loginMember();
+	header("Location: ./logout");
+	
+}
+
+
+
+
+
+
+if (isset($_SESSION["username"]) && $_SESSION["status"] == "active") {
+
+$url = "./dashboard";
+header("Location: $url");
+session_write_close();
+}
+
+
+
+
+
+
 if (! empty($_POST["signup-btn"])) {
     require_once './Model/Member.php';
     $member = new Member();

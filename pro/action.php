@@ -117,26 +117,38 @@ require_once __DIR__ . '/Model/Orders.php';
 
 // all Listings
 if(!empty($_POST['action']) && $_POST['action'] == 'ordersList') {
+	if($_SESSION["type_of_user"] == "admin"){
 	$orders->getOrdersList("");
+
+	}
+
+	else if($_SESSION["type_of_user"] == "client"){
+		$orders->getOrdersList("");
+
+	}
+		else{
+		$orders->getOrdersList("");
+	}
 }
 
 
 // all New Listings
 if(!empty($_POST['action']) && $_POST['action'] == 'ordersListNew') {
-	$orders->getOrdersList("new");
+	$orders->getOrdersList("new","","");
 }
 
 
 // all In progress Listings
 if(!empty($_POST['action']) && $_POST['action'] == 'ordersListInProgress') {
-	$orders->getOrdersList("during");
+	$orders->getOrdersList("during","","");
 }
 
 
 // all closed listings
 if(!empty($_POST['action']) && $_POST['action'] == 'ordersListClosed') {
-	$orders->getOrdersList("closed");
+	$orders->getOrdersList("closed","","");
 }
+
 
 
 if(!empty($_POST['btn_action_orders']) && $_POST['btn_action_orders'] == 'addOrder'){

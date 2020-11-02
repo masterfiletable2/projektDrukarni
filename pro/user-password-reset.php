@@ -4,8 +4,10 @@
 <?php
 use Phppot\Users;
 use Phppot\Php_Mailer;
+session_start();
 
 require_once('functions.php');
+require_once('redirection.php');
 
 
 

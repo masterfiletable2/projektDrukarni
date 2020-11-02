@@ -187,9 +187,25 @@ $(function(){
 				$('#order_notes').val(data.order_notes);
 				$('#quantity').val(data.quantity);
 				$('#quantity_of_excepted').val(data.quantity_of_excepted);
+				$('#quantity_of_alert').val(data.quantity_of_alert);
 				$('#id_order').val(id_order);
 				$('#action').val('Edytuj');
 				$('#btn_action_orders').val('updateOrders');
+
+					$("#action").click(function(){
+
+					// 	if(data.order_status){
+					// 	alert(data.order_status)
+					// 	data.order_status = 
+					// 	alert($('#order_status').val())
+					// }
+
+
+						if($('.modal-dialog #order_status').val() == "closed" && $(".modal-dialog #quantity").val() <  $(".modal-dialog #quantity_of_excepted").val())
+						return false
+					})
+
+
 			}
 		})
 	});
@@ -218,7 +234,6 @@ $(function(){
 	});
 	
 });
-
 
 
 

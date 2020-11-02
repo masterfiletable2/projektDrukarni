@@ -1,7 +1,15 @@
 <?php
  use Phppot\Member;
+ session_start();
 
+ 
 require_once('functions.php');
+require_once('redirection.php');
+
+require_once('template/nav_template.php');
+require_once('template/user-edit_template.php');
+
+
  
 if (! empty($_POST["modify-btn"])) {
     require_once './Model/Member.php';
@@ -16,26 +24,8 @@ if (! empty($_POST["modify-btn"])) {
 
 
 
-require_once('template/nav_template.php');
-require_once('template/user-edit_template.php');
 
 
-
-session_start();
-if (isset($_SESSION["username"])) {
-
-   
-
-   
-
-    session_write_close();
-} else {
-  
-    session_unset();
-    session_write_close();
-    $url = "./index";
-    header("Location: $url");
-}
 
 
 
@@ -56,57 +46,24 @@ if (isset($_SESSION["username"])) {
 <body>
 	
      
-    <div class="row vh-100 w-100">
-       <?php nav() ?>
-
-        <section class="col-md-9 bg-light">
-
-
-        <?php
-
-// $mysqli = new mysqli('localhost', 'root', '', 'pro'); // add the database name (fourth parameter)
-
-
-// $query = "SELECT * FROM tbl_member WHERE username = '{$_SESSION['username']}'";
-// $result = $mysqli->query($query) or die($mysqli->error);
-
-// if($result->num_rows > 0) {
-//     while($row = $result->fetch_assoc()) {
-
-//         echo "<tr>";
-//         echo "<td>".$row['id']."</td>";
-//         echo "<td>".$row['username'].$row['lastname']."</td>";
-//         echo "<td>".$row['email']."</td>";
-//         echo "<td>".$row['nip']."</td>";
-//         echo "<td>".$row['company']."</td>";
-//         echo "<td>".$row['adress']."</td>";
-//         echo "<td>".$row['mobile']."</td>";
-//         echo "</tr>";
    
-//         foreach($row as $val) {
-//             echo "$val <br/>";
-//         }
-//     }   
-// } 
+<section class="wrapper">
 
-// else {
-//     echo 'not found';
-// }
+<div class="app_nav">
+    <?php nav() ?>
+</div>
 
-
-?>
-
-
+<div class="app_dashboard">
     <?php
-        // session_start();
-        
-    edit_profile();
-    
+    // session_start();
+    edit_profile_template();
     session_write_close();
-    
     ?>
-        </section>
-    </div>
+</div>
+
+</section>
+
+
 
 
 

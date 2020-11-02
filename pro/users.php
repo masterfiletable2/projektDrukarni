@@ -1,25 +1,13 @@
 <?php
 use Phppot\Users;
+session_start();
 require_once('functions.php');
 require_once('template/nav_template.php');
 require_once('template/users_template.php');
+require_once('redirection.php');
 
 
 
-session_start();
-if (isset($_SESSION["username"])) {
-
-
-   
-
-    session_write_close();
-} else {
- 
-    session_unset();
-    session_write_close();
-    $url = "./index";
-    header("Location: $url");
-}
 
 
 
@@ -49,18 +37,17 @@ $users = new Users();
 
 
   
-<div class="row vh-100 w-100">
-       <?php nav() ?>
+<section class="wrapper">
 
-        <section class="col-md-9 bg-light">
+<div class="app_nav">
+    <?php nav() ?>
+</div>
 
-            <?php users_template() ?>
+<div class="app_dashboard">
 
-
-         
-
-        </section>
-    </div>
+    <h2>Lista użytkowników</h2>
+    <?php users_template() ?>
+</div>
 
 
     <?php include_scripts() ?>
@@ -76,7 +63,6 @@ $users = new Users();
 
 
 	
-</div>	
 
 </body>
 </html>

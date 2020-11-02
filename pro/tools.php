@@ -1,25 +1,21 @@
 <?php
-use Phppot\Orders;
 session_start();
-
 require_once('functions.php');
 require_once('template/nav_template.php');
-require_once('template/orders_template.php');
+require_once('template/tools_template.php');
 require_once('redirection.php');
 
 
 
 
 
-require_once('./Model/Orders.php');
-$orders = new Orders();
 ?>
 
 
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<title>Lista materiałów</title>
+<title>Narzędzia</title>
 <link rel="stylesheet" href="assets/css/dataTables.bootstrap.min.css" />
 
 <?php include_styles()?>
@@ -30,19 +26,18 @@ $orders = new Orders();
     
 
 
-<section class="wrapper">
 
-<div class="app_nav">
-    <?php nav() ?>
-</div>
 
-<div class="app_dashboard">
-    <h2>Najnowsze zlecenia</h2>
-    <?php orders_template($orders, "ordersListInProgress"); ?>
-</div>
+  
+<div class="row vh-100 w-100">
+       <?php nav() ?>
 
-</section>
+        <section class="col-md-9 bg-light">
+            
+            <?php tools_template(); ?>
 
+        </section>
+    </div>
 
 
     <?php include_scripts() ?>
@@ -54,6 +49,7 @@ $orders = new Orders();
 <script src="vendor/jquery.dataTables.min.js"></script>
 <script src="vendor/orders.js"></script>
 	
+</div>	
 
 </body>
 </html>

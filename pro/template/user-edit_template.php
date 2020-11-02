@@ -1,6 +1,6 @@
 <?php
 
-function edit_profile(){
+function edit_profile_template(){
 
 
 //comparison SESSION -> POST

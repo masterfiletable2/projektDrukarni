@@ -1,25 +1,13 @@
 <?php
 use Phppot\Orders;
+session_start();
 require_once('functions.php');
 require_once('template/nav_template.php');
 require_once('template/orders_template.php');
+require_once('redirection.php');
 
 
 
-session_start();
-if (isset($_SESSION["username"])) {
-
-
-   
-
-    session_write_close();
-} else {
- 
-    session_unset();
-    session_write_close();
-    $url = "./index";
-    header("Location: $url");
-}
 
 
 require_once('./Model/Orders.php');
@@ -42,17 +30,18 @@ $orders = new Orders();
 
 
 
+<section class="wrapper">
 
-  
-<div class="row vh-100 w-100">
-       <?php nav() ?>
+<div class="app_nav">
+    <?php nav() ?>
+</div>
 
-        <section class="col-md-9 bg-light">
-            
-            <?php orders_template($orders,"ordersList"); ?>
+<div class="app_dashboard">
+    <h2>Zlecenia</h2>
+    <?php orders_template($orders, "ordersList"); ?>
+</div>
 
-        </section>
-    </div>
+</section>
 
 
     <?php include_scripts() ?>
@@ -64,7 +53,6 @@ $orders = new Orders();
 <script src="vendor/jquery.dataTables.min.js"></script>
 <script src="vendor/orders.js"></script>
 	
-</div>	
 
 </body>
 </html>

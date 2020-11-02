@@ -133,3 +133,16 @@ $("#action").click(function(){
 // }
 })
 
+
+
+
+
+
+
+
+$("#notification,#notification-close").click(function(){
+
+	$(".notifications-content").toggle();
+
+})
+

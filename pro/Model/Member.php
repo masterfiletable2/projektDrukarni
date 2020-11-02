@@ -114,7 +114,6 @@ class Member
     {
 
        
-        session_start();
 
         $memberRecord = $this->getMember($_SESSION["username"]);
 
